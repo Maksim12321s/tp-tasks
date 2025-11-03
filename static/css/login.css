@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Exo+2&family=Freckle+Face&family=Pangolin&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: "Pangolin", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.main{
+    display:flex;
+    width: 1000px;
+    margin: auto;
+    gap:30px;
+}
+
+
+
+.login{
+    width: 70%;
+}
+.login__form{
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+    position: relative;
+    
+
+}
+.input__login{
+    display: flex;
+}
+.input__password{
+    display: flex;
+}
+.input__login input{
+    position: absolute;
+    left: 100px;
+}
+.input__password input{
+    position: absolute;
+    left:100px;
+}
+.login__form input{
+    border: solid 3px black;
+}
+.login__buttons a{
+    width: fit-content;
+}
+.login__buttons button{
+    background-color: green;
+    color: white;
+    box-shadow: 3px 3px 1px black;
+    height: 30px;
+    width:fit-content;
+
+}
+.login__buttons button:hover{
+    cursor: pointer;
+}
+.login__buttons{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: flex-start;
+    gap: 10px;
+    position: absolute;
+    left: 100px;
+    top: 110px;
+}
+.aside{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.aside__tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.members__list a{
+    width:fit-content;
+
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: auto;
+}
+.header__content{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.header__content h1{
+    margin: 0;
+}
+.header__content img{
+    width: 50px;
+    height: fit-content;
+}
+.header__content button{
+    background-color: green;
+    color: white;
+    box-shadow: 3px 3px 1px black;
+    height: 30px;
+    width:fit-content;
+    
+}
+.header__content button:hover{
+    cursor: pointer;
+}
+.root{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.header__content input{
+    border-radius: 9px;
+    font-size: 15px;
+}
+.header__profile{
+    display: flex;
+    gap:10px;
+}
+.aside__profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.header__options{
+    display: flex;
+    gap:10px;
+}
+.search{
+    display: flex;
+    gap: 10px;
+}
+
+.header table{
+    width: 100%;
+    border-bottom: solid 2px black;
+}
+.members__list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.error{
+    color: red;
+}

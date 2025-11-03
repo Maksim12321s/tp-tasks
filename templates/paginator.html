@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<div class="question__paging">
+        <a href="?page=1"> 1</a>
+        {%if page_obj.has_previous %}
+        {%if page_obj.previous_page_number != 1 %}
+        <a href="?page={{page_obj.previous_page_number}}">{{ page_obj.previous_page_number}} </a>
+        {%endif%}
+        {% endif %}
+        <span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}.</span>
+        {%if page_obj.has_next %}
+        {%if page_obj.next_page_number != page_obj.paginator.num_pages  %}
+        <a href="?page={{page_obj.next_page_number}}">{{ page_obj.next_page_number}} </a>
+        {%endif%}
+        {% endif %}
+        <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>   
+</div>

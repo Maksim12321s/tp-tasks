@@ -1,0 +1,24 @@
+{% load static%}
+<div class="question__block">
+    <div class="question__aside">
+        <img alt = img src = "{% static 'img/avatar.jpg' %}">
+        <input type = "number">
+    </div>
+    <div class="question__content">
+        <h3>{{question.title}}</h3>
+        <div class="question__text">
+            <p>
+                {{question.text}}
+            </p>
+        </div>
+        <div class="question__footer">
+            <a href = "{%url 'question' q_id=question.id%}">answer(3)</a>
+            <span>Tags:</span>
+            <div class="tags__list">
+                {%for tag in question.tags %}
+                    <a href = "{% url 'tags' q_tag=tag%}">{{ tag }}</a>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
