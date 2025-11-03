@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% load static  %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/question.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="question">
+        <div class="question__context">
+            <div class="question__aside">
+                <img src="{%static 'img/avatar.jpg'%}">
+                <input type="number">
+            </div>
+            <div class="question__text">
+                <h2>{{question.title}}</h2>
+                <p>{{question.text}}</p>
+                <div class="question__tags">
+                    <span>Tags:</span>
+                    {%for tag in question.tags%}
+                        <a href = "{% url 'tags' q_tag=tag%}"> {{tag}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <table><tr><td></td></tr></table>
+        {% for answer in page_obj%}
+            {% include 'questionAnswerBlock.html' %}
+        {%endfor%}
+        {% include 'paginator.html'%}
+        <table><tr><td></td></tr></table>
+        <div class="typing__block">
+            <textarea placeholder="Enter your answer here."></textarea>
+        </div>
+        <button>Answer</button>
+        
+    </div>
+    {% include 'aside_tags.html' %}
+
+{% endblock %}

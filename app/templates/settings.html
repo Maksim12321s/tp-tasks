@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load static  %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="settings">
+        <h2>Settings: Dr.Pepper</h2>
+        <div class="login">
+            <label>login</label>
+            <input type="text">
+        </div>
+        <div class="email">
+            <label>email</label>
+            <input type="email">
+        </div>
+        <div class="nickname">
+            <label>nickname</label>
+            <input type="text">
+        </div>
+        <div class="avatar">
+            <label>upload avatar</label>
+            <input type="file">
+            <div class="avatar__input">
+                
+            </div>
+            
+            
+        </div>
+        <img src="{% static 'img/avatar.jpg' %}">
+        <button>Save</button>
+    </div>
+    {% include 'aside_tags.html' %}
+
+{% endblock %}

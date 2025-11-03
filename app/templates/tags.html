@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% load static  %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+    
+    <div class="question">
+        <h2>
+            Tag: {{ tag }}
+        </h2>
+        <div class="question__list">
+            {%for question in page_obj%}
+                {%include 'questionBlock.html'%}
+            {%endfor%}
+        </div>
+        {%include 'paginator.html' %}
+    </div>
+    {% include 'aside_tags.html' %}
+
+{% endblock %}
+{% include 'questionBlock.html' %}

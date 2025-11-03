@@ -1,0 +1,42 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block style%}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{%endblock%}
+{% block content %}
+    <div class="login">
+        <h2>Registration</h2>
+        <form action="" class="login__form">
+            <span class = "error">Sorry,this email address is already used!</span>
+            <div class="input__login">
+                <label>Login</label>
+                <input>
+            </div>
+            <div class="input__login">
+                <label>Email</label>
+                <input type="email">
+            </div>
+            <div class="input__login">
+                <label>NickName</label>
+                <input>
+            </div>
+            <div class="input__login">
+                <label>Password</label>
+                <input type="password">
+            </div>
+            <div class="input__login">
+                <label>Repeat password</label>
+                <input type="password">
+            </div>
+            <div class="input__login">
+                <label>Upload avatar</label>
+                <input type="file">
+            </div>
+            <div class="login__buttons">
+                <button>Register!</button>
+            </div>
+
+        </form>
+    </div>
+    {%include 'aside_tags.html'%}
+{%endblock%}
