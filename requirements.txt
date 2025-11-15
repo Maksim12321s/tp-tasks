@@ -31,6 +31,7 @@ examples-rclpy-minimal-client==0.19.6
 examples-rclpy-minimal-publisher==0.19.6
 examples-rclpy-minimal-service==0.19.6
 examples-rclpy-minimal-subscriber==0.19.6
+Faker==38.0.0
 geometry-msgs==5.3.6
 image-geometry==4.1.0
 interactive-markers==2.5.5
@@ -139,5 +140,6 @@ topic-monitor==0.33.7
 trajectory-msgs==5.3.6
 turtlesim==1.8.3
 type-description-interfaces==2.0.3
+tzdata==2025.2
 unique-identifier-msgs==2.5.0
 visualization-msgs==5.3.6
