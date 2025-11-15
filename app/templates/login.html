@@ -1,0 +1,27 @@
+{%extends 'base.html' %}
+{% load static%}
+{%block style %}
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+{%endblock%}
+{%block content%}
+    <div class="login">
+        <h2>Log In</h2>
+        <span class="error">Sorry, wrong password!</span>
+        <form action="" class="login__form">
+            <div class="input__login">
+                <label>Login</label>
+                <input>
+            </div>
+            <div class="input__login">
+                <label>Password</label>
+                <input>
+            </div>
+            <div class="login__buttons">
+                <button>Log In!</button>
+                <a href="{% url 'register'%}">create new account</a>
+            </div>
+
+        </form>
+    </div>
+    {%include 'aside_tags.html'%}
+{%endblock%}

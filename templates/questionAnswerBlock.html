@@ -1,0 +1,16 @@
+{%load static%}
+<div class="answer__block">
+    <div class="answer__aside">
+        <img src="/{{question.author.avatar}}">
+        <input type="number">
+    </div>
+    <div class="answer__text">
+        <p>
+            {{answer.text}}
+        </p>
+        <div class="answer__correct">
+            <input type="checkbox">
+            <span>Correct!</span>    
+        </div>
+    </div>
+</div>
