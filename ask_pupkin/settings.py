@@ -18,7 +18,6 @@ import yaml
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 CONFIG_FILE = os.path.join(BASE_DIR,"config.yml")
-a = 1
 try:
     with open(CONFIG_FILE, 'r') as f:
         CONFIG = yaml.safe_load(f)

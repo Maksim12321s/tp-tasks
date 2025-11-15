@@ -7,7 +7,7 @@
     <div class="question">
         <div class="question__context">
             <div class="question__aside">
-                <img src="{%static 'img/avatar.jpg'%}">
+                <img src="/{{question.author.avatar}}">
                 <input type="number">
             </div>
             <div class="question__text">
@@ -15,7 +15,7 @@
                 <p>{{question.text}}</p>
                 <div class="question__tags">
                     <span>Tags:</span>
-                    {%for tag in question.tags%}
+                    {%for tag in question.tag_names%}
                         <a href = "{% url 'tags' q_tag=tag%}"> {{tag}}</a>
                     {% endfor %}
                 </div>

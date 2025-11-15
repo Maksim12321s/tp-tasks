@@ -100,12 +100,33 @@
 .question__paging a{
     border: solid 2px grey;
     text-decoration: none;
-    width: 30px;
+    width: fit-content;
+    min-width: 30px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: black;
-    /* border-radius: 10px; */
     box-shadow: 3px 3px 1px black;
+}
+
+.like{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    color: red;
+    background-color: transparent;
+    border: none;
+}
+.like:hover{
+    cursor: pointer;
+    
+}
+
+.logo{
+    font-size: 35px;
+    text-decoration: none;
+    color: black;
 }

@@ -51,7 +51,7 @@ img{
 .question__aside input{
     width: 50px;
 }
-.question__aside img{
+.question__aside_avatar{
     width: 70px;
     height: fit-content;
 }

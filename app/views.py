@@ -1,22 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.views.generic import TemplateView,View
 from django.core.paginator import Paginator
-
+from app.models import *
 # Create your views here.
 class IndexView(View):
     def get(self, request,*args,**kwargs):
         context = {}
-        questions = []
-        for i in range(0,30):
-            questions.append(
-                {'id': i,
-                 'text': "some text",
-                 'title': "title" + str(i),
-                 'tags':["bender", "black-jack"]}
-            )
-            if len(questions[i]["text"]) > 10:
-                questions[i]["text"] = questions[i]["text"][:11]
-        
+        questions = Question.questions.get_BestQuestions()
+        for i in questions:
+            if len(i.text) > 30:
+                i.text = i.text[:30] + '...'
         GetMembersTags(context)
         context["page_obj"] = paginate(questions,request,5)
         return render(request,'index.html', context)
@@ -45,18 +38,8 @@ class RegisterView(View):
 class QuestionView(View):
     def get(self, request,q_id):
         context = {}
-        answers = []
-        question = {
-            "id": q_id,
-            "tags": ["black-jack","bender"],
-            "title": "How to build a moon park?" + str(q_id),
-            "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
-        }
-        for i in range(6):
-            answers.append(
-                {"id" : i,
-                 "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}
-            )
+        question = Question.objects.get(id=q_id)
+        answers = Answer.objects.filter(question_id=q_id)
         GetMembersTags(context)
         context["page_obj"] = paginate(answers,request,4)
         context["question"] = question
@@ -66,16 +49,12 @@ class QuestionView(View):
 class TagsView(View):
     def get(self, request,q_tag):
         context = {}
-        questions = []
-        for i in range(0,30):
-            questions.append(
-                {'id': i,
-                 'text': "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                 'title': "title" + str(i),
-                 "tags":["bender","black-jack"]}
-            )
-            if len(questions[i]["text"]) > 50:
-                questions[i]["text"] = questions[i]["text"][:51] + '...'
+        print(q_tag)
+        tag = get_object_or_404(Tag, Name = q_tag)
+        questions = Question.questions.get_by_tag(q_tag)
+        for i in questions:
+            if len(i.text) > 30:
+                i.text = i.text[:30] + '...'
         GetMembersTags(context)
         context["page_obj"] = paginate(questions,request,5)
         context["tag"] = q_tag
@@ -97,25 +76,11 @@ def paginate(objects_list, request, per_page=10):
 
 
 def GetMembersTags(context):
-    p_t = ["python",
-           
-           "TechnoPark",
-           "MYSQL",
-           "Mail.ru",
-           "Firefox",
-           "python",
-           "TechnoPark",
-           "MYSQL",
-           "MYSQL",
-           "Mail.ru",
-           "Firefox",
-           "python",
-           "TechnoPark"
-           ]
-    b_m = ["Mr. Freeman",
-        "Dr. House",
-        "Bender",
-        "V. Pupkin"
-        ]
+    q = Question.questions.get_BestQuestions()[:10]
+    p_t = []
+    b_m = []
+    for i in q:
+        p_t += (i.tag_names)
+        b_m.append(i.author.nickname)
     context["best_members"] = b_m
     context["popular_tags"] = p_t

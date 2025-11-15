@@ -11,7 +11,7 @@
 <body class="root">
     <header class="header">
         <div class="header__content">
-        <h1>AskPupkin</h1>
+        <a href = "{% url 'mainpage' %}" class = "logo">AskPupkin</a>
         <div class="search">
             <input>
         <button>ASK!</button>
@@ -19,7 +19,7 @@
         
         <div class="header__profile">
             {% if user.is_authentificated %}
-            <img alt = img src = "{% static '/img/avatar.jpg' %}">
+            <img alt = img src = "{% static '/img/avatar.png' %}">
             <div class="aside__profile">
                 <span>Dr.Pepper</span>
                 <div class="header__options">
