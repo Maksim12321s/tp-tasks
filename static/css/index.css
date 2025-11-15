@@ -74,3 +74,15 @@ img{
 .error{
     color: red;
 }
+.q_titles{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 20px;
+}
+.q_titles h1{
+    width: fit-content;
+}
+.q_titles a{
+    font-size: 30px;
+}

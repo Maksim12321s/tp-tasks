@@ -6,6 +6,16 @@ from app.models import *
 class IndexView(View):
     def get(self, request,*args,**kwargs):
         context = {}
+        questions = Question.questions.get_Newest()
+        for i in questions:
+            if len(i.text) > 30:
+                i.text = i.text[:30] + '...'
+        GetMembersTags(context)
+        context["page_obj"] = paginate(questions,request,5)
+        return render(request,'index.html', context)
+class HotQ(View):
+    def get(self, request,*args,**kwargs):
+        context = {}
         questions = Question.questions.get_BestQuestions()
         for i in questions:
             if len(i.text) > 30:
@@ -13,7 +23,6 @@ class IndexView(View):
         GetMembersTags(context)
         context["page_obj"] = paginate(questions,request,5)
         return render(request,'index.html', context)
-
 class SettingsView(View):
     def get(self, request,*args,**kwargs):
         context = {}
@@ -49,7 +58,6 @@ class QuestionView(View):
 class TagsView(View):
     def get(self, request,q_tag):
         context = {}
-        print(q_tag)
         tag = get_object_or_404(Tag, Name = q_tag)
         questions = Question.questions.get_by_tag(q_tag)
         for i in questions:
